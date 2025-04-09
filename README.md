@@ -1,4 +1,4 @@
-# URL Shortener Microservices Architecture
+# URL Shortener
 
 This project is a production-ready, horizontally scalable URL shortener system based on a microservices architecture. It consists of two main services:
 
@@ -7,9 +7,10 @@ This project is a production-ready, horizontally scalable URL shortener system b
 
 Both services communicate with shared PostgreSQL and Redis instances and are containerized using Docker.
 
----
+<br />
+<br />
 
-## Features
+# Features
 
 - Fast redirects using Redis cache
 - Unique short code generation using NanoID
@@ -18,9 +19,10 @@ Both services communicate with shared PostgreSQL and Redis instances and are con
 - Dockerized and deployable via Docker Compose or on AWS EC2
 - Health check endpoints for service monitoring
 
----
+<br />
+<br />
 
-## Folder Structure
+# Folder Structure
 
 ├── create-service/
 │ └── Handles POST /shorten
@@ -29,10 +31,16 @@ Both services communicate with shared PostgreSQL and Redis instances and are con
 ├── docker-compose.yml
 └── README.md
 
+<br />
+<br />
+
 # Health Checks
 
 - Create Service: GET /health (Port 3001)
 - Redirect Service: GET /health (Port 3002)
+
+<br />
+<br />
 
 # BOTEC Calculation
 
@@ -82,6 +90,9 @@ Both services communicate with shared PostgreSQL and Redis instances and are con
 | PostgreSQL (RDS) | db.t3.micro + 10GB   | ~$15–20           |
 | **Total Infra**  | —                    | **~$60–70/month** |
 
+<br />
+<br />
+
 # Run Locally with Docker Compose
 
 1. Clone the repo
@@ -100,4 +111,29 @@ docker compose up --build
 3. Test endpoints
 
 - POST: http://localhost:3001/api/shorten
-- GET: http://localhost:3002/<shortcode>
+- GET: http://localhost:3002/{shortcode}
+
+<br />
+<br />
+
+# Deployment Notes
+
+- Use separate EC2 instances for each microservice
+- Shared RDS or EC2 instance for PostgreSQL
+- Shared Redis EC2 Instance
+- Place all the resources in the same VPC for low latency
+
+<br />
+<br />
+
+# Environment Variables
+
+.env in both services should define
+
+```bash
+PORT=YOUR_SERVER_PORT
+BASE_URL=http://localhost:<PORT>
+DATABASE_URL= <YOUR POSTGRES CONNECTION URL>
+REDIS_HOST= <REDIS_HOST>
+REDIS_PORT= <REDIS_PORT>
+```
