@@ -10,6 +10,13 @@ Both services communicate with shared PostgreSQL and Redis instances and are con
 <br />
 <br />
 
+# System Design Diagram
+
+![System Design Diagram](./system-design.png)
+
+<br />
+<br />
+
 # Features
 
 - Fast redirects using Redis cache
