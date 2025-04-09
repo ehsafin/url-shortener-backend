@@ -24,12 +24,12 @@ Both services communicate with shared PostgreSQL and Redis instances and are con
 
 # Folder Structure
 
-├── create-service/
-│ └── Handles POST /shorten
-├── redirect-service/
-│ └── Handles GET /:shortCode
-├── docker-compose.yml
-└── README.md
+- create-service/
+  - Handles POST /shorten
+- redirect-service/
+  - Handles GET /:shortCode
+- docker-compose.yml
+- README.md
 
 <br />
 <br />
